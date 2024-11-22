@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Teleport : MonoBehaviour
+{
+    public bool TeleportOn = false;
+    public Teleport teleport;
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player") && !TeleportOn)
+        {
+            teleport.TeleportOn = true;
+            other.gameObject.transform.position = teleport.gameObject.transform.position;
+
+        }
+    }
+    public void OntriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            TeleportOn = false;
+        }
+    }
+}
